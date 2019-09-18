@@ -1,0 +1,2 @@
+# classmanager
+JHipster sample project
