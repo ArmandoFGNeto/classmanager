@@ -1,0 +1,27 @@
+{
+  "classmanagerApp": {
+    "history": {
+      "home": {
+        "title": "Histories",
+        "createLabel": "Criar novo History",
+        "createOrEditLabel": "Criar ou editar History",
+        "notFound": "Nenhum History encontrado"
+      },
+      "created": "Um novo History foi criado com o identificador {{ param }}",
+      "updated": "Um History foi atualizado com o identificador {{ param }}",
+      "deleted": "Um History foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir History {{ id }}?"
+      },
+      "detail": {
+        "title": "History"
+      },
+      "createdAt": "Created At",
+      "schoolClass": "School Class",
+      "grade": "Grade",
+      "subject": "Subject",
+      "teacher": "Teacher",
+      "student": "Student"
+    }
+  }
+}

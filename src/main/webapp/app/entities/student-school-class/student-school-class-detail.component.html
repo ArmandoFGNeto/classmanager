@@ -1,0 +1,47 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="student">
+            <h2><span jhiTranslate="classmanagerApp.student.detail.title">Student</span> {{student.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="classmanagerApp.student.name">Name</span></dt>
+                <dd>
+                    <span>{{student.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="classmanagerApp.student.age">Age</span></dt>
+                <dd>
+                    <span>{{student.age}}</span>
+                </dd>
+                <dt><span jhiTranslate="classmanagerApp.student.register">Register</span></dt>
+                <dd>
+                    <span>{{student.register}}</span>
+                </dd>
+                <dt><span jhiTranslate="classmanagerApp.student.schoolClass">School Class</span></dt>
+                <dd>
+                    <span *ngFor="let schoolClass of student.schoolClasses; let last = last">
+                        <a [routerLink]="['/school-class-school-class', schoolClass?.id, 'view' ]">{{schoolClass.id}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="classmanagerApp.student.history">History</span></dt>
+                <dd>
+                    <span *ngFor="let history of student.histories; let last = last">
+                        <a [routerLink]="['/history-school-class', history?.id, 'view' ]">{{history.id}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/student-school-class', student.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

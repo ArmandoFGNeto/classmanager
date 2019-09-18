@@ -1,0 +1,25 @@
+{
+  "classmanagerApp": {
+    "subject": {
+      "home": {
+        "title": "Subjects",
+        "createLabel": "Criar novo Subject",
+        "createOrEditLabel": "Criar ou editar Subject",
+        "notFound": "Nenhum Subject encontrado"
+      },
+      "created": "Um novo Subject foi criado com o identificador {{ param }}",
+      "updated": "Um Subject foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Subject foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Subject {{ id }}?"
+      },
+      "detail": {
+        "title": "Subject"
+      },
+      "name": "Name",
+      "threshold": "Threshold",
+      "schoolClass": "School Class",
+      "history": "History"
+    }
+  }
+}

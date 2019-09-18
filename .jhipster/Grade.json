@@ -1,0 +1,39 @@
+{
+    "name": "Grade",
+    "fields": [
+        {
+            "fieldName": "applicationDate",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "value",
+            "fieldType": "Float"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "history",
+            "otherEntityRelationshipName": "grade",
+            "relationshipName": "history",
+            "ownerSide": false
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "student",
+            "otherEntityRelationshipName": "grade",
+            "relationshipName": "student",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190918124629",
+    "entityTableName": "grade",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "angularJSSuffix": "schoolClass"
+}

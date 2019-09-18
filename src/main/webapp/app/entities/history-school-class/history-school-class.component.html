@@ -1,0 +1,89 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="classmanagerApp.history.home.title">Histories</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-history-school-class" [routerLink]="['/history-school-class/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="classmanagerApp.history.home.createLabel">
+            Create a new History
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="alert alert-warning" *ngIf="histories?.length === 0">
+        <span jhiTranslate="classmanagerApp.history.home.notFound">No histories found</span>
+    </div>
+    <div class="table-responsive" *ngIf="histories?.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="createdAt"><span jhiTranslate="classmanagerApp.history.createdAt">Created At</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="schoolClassId"><span jhiTranslate="classmanagerApp.history.schoolClass">School Class</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="gradeId"><span jhiTranslate="classmanagerApp.history.grade">Grade</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="subjectId"><span jhiTranslate="classmanagerApp.history.subject">Subject</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="teacherId"><span jhiTranslate="classmanagerApp.history.teacher">Teacher</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let history of histories ;trackBy: trackId">
+                <td><a [routerLink]="['/history-school-class', history.id, 'view' ]">{{history.id}}</a></td>
+                <td>{{history.createdAt | date:'medium'}}</td>
+                <td>
+                    <div *ngIf="history.schoolClassId">
+                        <a [routerLink]="['/school-class-school-class', history.schoolClassId , 'view' ]" >{{history.schoolClassId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="history.gradeId">
+                        <a [routerLink]="['/grade-school-class', history.gradeId , 'view' ]" >{{history.gradeId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="history.subjectId">
+                        <a [routerLink]="['/subject-school-class', history.subjectId , 'view' ]" >{{history.subjectId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="history.teacherId">
+                        <a [routerLink]="['/teacher-school-class', history.teacherId , 'view' ]" >{{history.teacherId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/history-school-class', history.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/history-school-class', history.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/history-school-class', { outlets: { popup: history.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div [hidden]="histories?.length === 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

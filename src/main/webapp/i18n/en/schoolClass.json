@@ -1,0 +1,27 @@
+{
+  "classmanagerApp": {
+    "schoolClass": {
+      "home": {
+        "title": "School Classes",
+        "createLabel": "Create a new School Class",
+        "createOrEditLabel": "Create or edit a School Class",
+        "notFound": "No School Classes found"
+      },
+      "created": "A new School Class is created with identifier {{ param }}",
+      "updated": "A School Class is updated with identifier {{ param }}",
+      "deleted": "A School Class is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete School Class {{ id }}?"
+      },
+      "detail": {
+        "title": "School Class"
+      },
+      "name": "Name",
+      "description": "Description",
+      "history": "History",
+      "teacher": "Teacher",
+      "subject": "Subject",
+      "student": "Student"
+    }
+  }
+}

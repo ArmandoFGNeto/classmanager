@@ -1,0 +1,63 @@
+entity Student {
+	name String required maxlength(255),
+    age Integer,
+    register String required unique
+}
+
+entity SchoolClass {
+	name String required maxlength(255),
+    description TextBlob
+}
+
+entity Teacher {
+	name String required maxlength(255),    
+	title String required maxlength(50),
+	payment BigDecimal required
+}
+
+entity Subject {
+	name String required,
+    threshold Float required
+}
+
+entity Grade {
+	applicationDate Instant,
+	value Float
+}
+
+entity History {
+	createdAt Instant
+}
+
+relationship OneToOne {
+    History{schoolClass} to SchoolClass{history},
+    History{grade} to Grade{history},
+    History{subject} to Subject{history},
+    History{teacher} to Teacher{history}
+}
+
+relationship ManyToMany {
+	Student{schoolClass} to SchoolClass{student},
+    Student{history} to History{student}
+}
+
+relationship OneToMany {
+	Teacher{schoolClass} to SchoolClass{teacher},
+	Student{grade} to Grade{student}
+}
+
+relationship ManyToOne {
+	Subject{schoolClass} to SchoolClass{subject}
+}
+
+// Set pagination options
+paginate * with pagination
+
+// Use Data Transfert Objects (DTO)
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl
+
+// Set an angular suffix
+angularSuffix * with schoolClass
